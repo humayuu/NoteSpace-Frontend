@@ -27,7 +27,8 @@ const Notes = () => {
       try {
         const { data } = await api.get("/note");
         const list = Array.isArray(data) ? data : data.notes || data.data || [];
-        setNotes(list);
+        // Backend returns Mongo-style `_id`; normalize to `id` for the UI.
+        setNotes(list.map((note) => ({ ...note, id: note.id ?? note._id })));
       } catch {
         setAlert({ color: "danger", text: "Failed to load notes." });
       } finally {
