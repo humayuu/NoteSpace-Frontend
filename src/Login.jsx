@@ -10,7 +10,7 @@ import {
   MDBSpinner,
 } from "mdb-react-ui-kit";
 import api from "./utils/api";
-import { setToken, setUser } from "./utils/auth";
+import { setToken } from "./utils/auth";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -28,7 +28,6 @@ const Login = () => {
     try {
       const { data } = await api.post("/login", form);
       if (data.token) setToken(data.token);
-      setUser(data.user);
       setAlert({ color: "success", text: "Logged in successfully!" });
       setTimeout(() => navigate("/notes"), 1200);
     } catch (err) {

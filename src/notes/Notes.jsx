@@ -65,6 +65,10 @@ const Notes = () => {
             <MDBIcon fas icon="user-circle" className="me-2 text-primary" />
             {userName}
           </span>
+          <MDBBtn tag={Link} to="/notes/create" color="primary">
+            <MDBIcon fas icon="plus" className="me-2" />
+            Create note
+          </MDBBtn>
           <MDBBtn color="danger" outline onClick={handleLogout}>
             <MDBIcon fas icon="right-from-bracket" className="me-2" />
             Logout
